@@ -6,7 +6,7 @@ public class Enemy extends GameObject {
     private int speed = 200;
     
     public Enemy(double x, double y){
-        super(x, y, 50, 50, "assets\\whale.png");
+        super(x, y, 50, 50, "assets\\toad.png");
     }
 
     @Override

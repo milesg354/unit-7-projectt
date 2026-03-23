@@ -14,8 +14,10 @@ public class MyGame extends ApplicationAdapter {
         activeObjects = new ArrayList<GameObject>();
 
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
-
-
+        Player playerOne = new Player(50,50);
+        activeObjects.add(playerOne);
+        Enemy playerTwo = new Enemy(100,50);
+        activeObjects.add(playerTwo);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
         
@@ -36,12 +38,20 @@ public class MyGame extends ApplicationAdapter {
         // --- AP REVIEW: POLYMORPHISM ---
         // TODO 5: Write a standard or enhanced for-loop to iterate through activeObjects.
         // For each object, call its move() method.
-
+        for(GameObject q : activeObjects){
+            if(q.getY() > 100){
+                q.setY(q.getY()-10);
+            }
+            q.move(deltaTime);
+        }
         
         //Note: Anything drawn must be between .begin() and .end()
         batch.begin();
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
-
+        for(GameObject q : activeObjects){
+            
+            q.draw(batch);
+        }
 
         batch.end();
 
