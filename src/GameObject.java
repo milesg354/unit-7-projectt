@@ -7,6 +7,7 @@ public class GameObject {
     // AP Standard: private instance variables
     private double x;
     private double y;
+    private int isPlayer;
    
 
     private int width;
@@ -38,6 +39,9 @@ public class GameObject {
     public Rectangle getHibox(){
         return hitbox;
     }
+    public int getPlayerNum(){
+        return isPlayer;
+    }
     
 
     // TODO 2: Write setter methods for x and y. 
@@ -66,6 +70,9 @@ public class GameObject {
      */
     public void move(double deltaTime) {
         // Leave blank for subclasses to override!
+    }
+    public void jump(double deltaTime){
+
     }
 }
 
