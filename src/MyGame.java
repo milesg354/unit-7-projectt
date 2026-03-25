@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Rectangle;
 
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
@@ -22,8 +23,10 @@ public class MyGame extends ApplicationAdapter {
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
         Player playerOne = new Player(50,100);
         activeObjects.add(playerOne);
-        Enemy playerTwo = new Enemy(700,100);
+        Enemy playerTwo = new Enemy(650,100);
         activeObjects.add(playerTwo);
+        Platform leftPlatform = new Platform(50,50,50,50);
+        activeObjects.add(leftPlatform);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
         
@@ -56,27 +59,11 @@ public class MyGame extends ApplicationAdapter {
         batch.draw(backgroundImage, 0, 0, 800, 500);
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
         for(GameObject q : activeObjects){
-            // if(q.getY() > 100){
-            //     q.setY(q.getY() - (170 * Gdx.graphics.getDeltaTime())); // Apply gravity
-            // }
+            if(q.getY() > 100){
+                q.setY(q.getY() - (170 * Gdx.graphics.getDeltaTime())); // Apply gravity
+            }
             q.move(deltaTime);
-            if(q.getPlayerNum() == 1){
-                if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-                    for(int i = 0; i < 25; i++){
-                        q.setY(q.getY() + 1);
-                        q.draw(batch);
-                    }
-                }
-            }
-            if(q.getPlayerNum() == 2){
-                if(Gdx.input.isKeyPressed(Input.Keys.W)){
-                    for(int i = 0; i < 25; i++){
-                        q.setY(q.getY() + 1);
-                        q.draw(batch);
-                    }
-                }
-            }
-            // q.jump(deltaTime);
+            q.jump(deltaTime);
             q.draw(batch);
         }
 
