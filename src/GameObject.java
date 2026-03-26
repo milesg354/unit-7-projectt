@@ -8,7 +8,7 @@ public class GameObject {
     private double x;
     private double y;
     private int isPlayer;
-   
+    private int lives;
 
     private int width;
     private int height;
@@ -16,12 +16,13 @@ public class GameObject {
     private Rectangle hitbox;
 
     // AP Standard: constructors
-    public GameObject(double x, double y, int width, int height, String imagePath) {
+    public GameObject(double x, double y, int width, int height, String imagePath, int lives) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.image = new Texture(imagePath);
+        this.lives = lives;
         // AP Review: Casting double to int for the LibGDX Rectangle class
         this.hitbox = new Rectangle((int) x, (int) y, width, height);
     }
@@ -52,6 +53,15 @@ public class GameObject {
         hitbox.setPosition((int) x, (int) y);
     }
 
+
+    public boolean isOnRectangle(Rectangle otherHitbox){
+        if(hitbox.overlaps(otherHitbox)){
+          return true;
+        } else{
+          return false;
+        } 
+    }
+    
     public void setY(double y){
         this.y = y;
         hitbox.setPosition((int) x, (int) y);
@@ -73,6 +83,9 @@ public class GameObject {
     }
     public void jump(double deltaTime){
 
+    }
+    public Bullet shoot(){
+        return null;
     }
 }
 

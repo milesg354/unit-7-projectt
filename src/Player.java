@@ -47,7 +47,7 @@ public class Player extends GameObject {
     private boolean isGrounded = true;
 
     public Player(double x, double y){
-        super(x, y, 70, 70, "assets/mario.png");
+        super(x, y, 70, 700, "assets/mario.png", 3);
     }
 
     @Override
@@ -74,6 +74,21 @@ public class Player extends GameObject {
         if (Gdx.input.isKeyJustPressed(Input.Keys.W) && isGrounded) {
             velocityY = JUMP_FORCE;
             isGrounded = false;
+        }
+    }
+
+    public Bullet shoot(){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.A)){
+            // Create a new bullet at the player's position
+            Bullet newBullet = new Bullet(getX(), getY(), true);
+            // Add the bullet to the activeObjects list in MyGame
+            return newBullet;
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.E)){
+            Bullet newBullet = new Bullet(getX(), getY(), false);
+            return newBullet;
+        }
+        else{
+            return null;
         }
     }
 }

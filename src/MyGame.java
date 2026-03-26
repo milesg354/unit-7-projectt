@@ -25,8 +25,14 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(playerOne);
         Enemy playerTwo = new Enemy(650,100);
         activeObjects.add(playerTwo);
-        Platform leftPlatform = new Platform(50,50,50,50);
+        Platform leftPlatform = new Platform(120,165,184,25);
         activeObjects.add(leftPlatform);
+        Platform RightPlatform = new Platform(496,165,184,25);
+        activeObjects.add(RightPlatform);
+        Platform TopPlatform = new Platform(304,235,192,25);
+        activeObjects.add(TopPlatform);
+        Platform BottomPlatform = new Platform(40,65,712,35);
+        activeObjects.add(BottomPlatform);
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
         
@@ -59,12 +65,15 @@ public class MyGame extends ApplicationAdapter {
         batch.draw(backgroundImage, 0, 0, 800, 500);
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
         for(GameObject q : activeObjects){
-            if(q.getY() > 100){
-                q.setY(q.getY() - (170 * Gdx.graphics.getDeltaTime())); // Apply gravity
-            }
+            // if(q.getY() > 100){
+            //     q.setY(q.getY() - (170 * Gdx.graphics.getDeltaTime())); // Apply gravity
+            // }
             q.move(deltaTime);
             q.jump(deltaTime);
             q.draw(batch);
+            if(q.shoot().equals(null)){
+                activeObjects.add(q.shoot());
+            }
         }
 
         batch.end();

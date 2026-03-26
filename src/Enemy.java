@@ -52,7 +52,7 @@ public class Enemy extends GameObject {
     private boolean isGrounded = true;
 
     public Enemy(double x, double y){
-        super(x, y, 90, 90, "assets/toad.png");
+        super(x, y, 90, 90, "assets/toad.png", 3);
     }
 
     @Override
@@ -80,5 +80,14 @@ public class Enemy extends GameObject {
             velocityY = JUMP_FORCE;
             isGrounded = false;
         }
+    }
+    public Bullet shoot(){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)){
+            // Create a new bullet at the player's position
+            Bullet newBullet = new Bullet(getX(), getY(), true);
+            // Add the bullet to the activeObjects list in MyGame
+            return newBullet;
+        }
+        return null; 
     }
 }
