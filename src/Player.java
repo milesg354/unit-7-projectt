@@ -47,7 +47,7 @@ public class Player extends GameObject {
     private boolean isGrounded = true;
 
     public Player(double x, double y){
-        super(x, y, 70, 700, "assets/mario.png", 3);
+        super(x, y, 70, 70, "assets/mario.png", 3);
     }
 
     @Override
@@ -62,13 +62,28 @@ public class Player extends GameObject {
         // Apply Gravity
         velocityY += GRAVITY * deltaTime;
         setY(getY() + (velocityY * deltaTime));
+        isGrounded = false;
 
         // Basic Floor Collision (Assuming Y=100 is your ground)
-        if (getY() <= 100) {
-            setY(100);
-            velocityY = 0;
-            isGrounded = true;
+        // if (getY() <= 100) {
+        //     setY(100);
+        //     velocityY = 0;
+        //     isGrounded = true;
+        // }
+
+        for (Platform platform :MyGame.platformsList){
+            int platformTop = (int) platform.getY() + (int) platform.getHeight();
+            boolean withinX = getX() + getWidth() > platform.getX() && getX() + getWidth() < platform.getX() + platform.getWidth();
+            boolean fallingOntoPlatform = getY() <= platformTop && (getY()- velocityY * deltaTime) >= platformTop;
+           
+            if (withinX && fallingOntoPlatform && velocityY <= 0) {
+                setY(platformTop);
+                velocityY = 0;
+                isGrounded = true;
+            }
         }
+        
+
 
         // Handle Jumping
         if (Gdx.input.isKeyJustPressed(Input.Keys.W) && isGrounded) {
@@ -77,18 +92,28 @@ public class Player extends GameObject {
         }
     }
 
-    public Bullet shoot(){
-        if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.A)){
-            // Create a new bullet at the player's position
-            Bullet newBullet = new Bullet(getX(), getY(), true);
-            // Add the bullet to the activeObjects list in MyGame
-            return newBullet;
-        } else if (Gdx.input.isKeyJustPressed(Input.Keys.E)){
-            Bullet newBullet = new Bullet(getX(), getY(), false);
-            return newBullet;
-        }
-        else{
-            return null;
-        }
-    }
+    // private boolean isLandingOnPlatform(Player p, Platform platform) {
+    //     boolean withinX = p.getX() + p.getWidth()> platform.getX() && p.getX()< platform.getX() + platform.getWidth();
+    //     boolean fallingOntoPlatform = p.getY() >= platform.getY() + platform.getHeight() && p.getY()+5 <= platform.getY() + platform.getHeight() - 10;
+    //     boolean falling = velocityY <= 0;
+    //     return withinX && fallingOntoPlatform && falling;
+   // }
+
+
+
+    // //public Bullet shoot(){
+    //     if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.A)){
+    //         // Create a new bullet at the player's position
+    //         Bullet newBullet = new Bullet(getX(), getY(), true);
+    //         // Add the bullet to the activeObjects list in MyGame
+    //         //return newBullet;
+    //     } else if (Gdx.input.isKeyJustPressed(Input.Keys.E)){
+    //         Bullet newBullet = new Bullet(getX(), getY(), false);
+    //        // return newBullet;
+    //     }
+    //     else{
+    //         //return null;
+    //     }
+    // }
 }
+

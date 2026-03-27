@@ -10,33 +10,39 @@ public class GameObject {
     private int isPlayer;
     private int lives;
 
-    private int width;
-    private int height;
+    protected float width;
+    protected float height;
     private Texture image;
     private Rectangle hitbox;
 
     // AP Standard: constructors
-    public GameObject(double x, double y, int width, int height, String imagePath, int lives) {
+    public GameObject(double x, double y, float width2, float height2, String imagePath, int lives) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
+        this.width = width2;
+        this.height = height2;
         this.image = new Texture(imagePath);
         this.lives = lives;
         // AP Review: Casting double to int for the LibGDX Rectangle class
-        this.hitbox = new Rectangle((int) x, (int) y, width, height);
+        this.hitbox = new Rectangle((int) x, (int) y, width2, height2);
     }
 
     // TODO 1: Write getter methods for x, y, and hitbox.
 
     public double getX(){
-        return x;
+     return x;
     }
 
     public double getY(){
         return y;
     }
 
+    public double getWidth(){
+        return width;
+    }
+    public double getHeight(){
+        return height;
+    }
     public Rectangle getHibox(){
         return hitbox;
     }
@@ -84,8 +90,8 @@ public class GameObject {
     public void jump(double deltaTime){
 
     }
-    public Bullet shoot(){
-        return null;
-    }
+  //  public Bullet shoot(){
+       // return null;
+   // }
 }
 

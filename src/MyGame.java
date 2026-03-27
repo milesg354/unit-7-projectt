@@ -10,7 +10,9 @@ import com.badlogic.gdx.math.Rectangle;
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private ArrayList<GameObject> activeObjects;
+
     Texture backgroundImage;
+        public static ArrayList<Platform> platformsList = new ArrayList<Platform>();
 
     @Override
     public void create() {
@@ -19,12 +21,15 @@ public class MyGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         
         activeObjects = new ArrayList<GameObject>();
-
+        
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
-        Player playerOne = new Player(50,100);
+        
+        Player playerOne = new Player(500,500);
         activeObjects.add(playerOne);
         Enemy playerTwo = new Enemy(650,100);
         activeObjects.add(playerTwo);
+
+
         Platform leftPlatform = new Platform(120,165,184,25);
         activeObjects.add(leftPlatform);
         Platform RightPlatform = new Platform(496,165,184,25);
@@ -33,9 +38,14 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(TopPlatform);
         Platform BottomPlatform = new Platform(40,65,712,35);
         activeObjects.add(BottomPlatform);
+        
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
         
+        platformsList.add(leftPlatform);
+        platformsList.add(RightPlatform);
+        platformsList.add(TopPlatform);
+        platformsList.add(BottomPlatform);
     }
 
     //render() is the game loop, called approx 60 times per second
@@ -71,9 +81,9 @@ public class MyGame extends ApplicationAdapter {
             q.move(deltaTime);
             q.jump(deltaTime);
             q.draw(batch);
-            if(q.shoot().equals(null)){
-                activeObjects.add(q.shoot());
-            }
+          //  if(q.shoot().equals(null)){
+              //  activeObjects.add(q.shoot());
+           // }
         }
 
         batch.end();
