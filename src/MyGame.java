@@ -38,6 +38,12 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(TopPlatform);
         Platform BottomPlatform = new Platform(40,65,712,35);
         activeObjects.add(BottomPlatform);
+        Platform SecretPlatform = new Platform(55,410,150,10);
+        activeObjects.add(SecretPlatform);
+        Platform AbovePlatform = new Platform(55,510,550,10);
+        activeObjects.add(AbovePlatform);
+        Platform SunPlatform = new Platform(650,410,50,10);
+        activeObjects.add(SunPlatform);
         
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
@@ -46,6 +52,9 @@ public class MyGame extends ApplicationAdapter {
         platformsList.add(RightPlatform);
         platformsList.add(TopPlatform);
         platformsList.add(BottomPlatform);
+        platformsList.add(SecretPlatform);
+        platformsList.add(AbovePlatform);
+        platformsList.add(SunPlatform); 
     }
 
     //render() is the game loop, called approx 60 times per second

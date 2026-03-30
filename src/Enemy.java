@@ -64,6 +64,8 @@ public class Enemy extends GameObject {
             setX(getX() + (speed * deltaTime));
         }
 
+        isGrounded = false;
+        
         // Apply Gravity
         velocityY += GRAVITY * deltaTime;
         setY(getY() + (velocityY * deltaTime));
@@ -73,6 +75,17 @@ public class Enemy extends GameObject {
             setY(100);
             velocityY = 0;
             isGrounded = true;
+        }
+        for (Platform platform :MyGame.platformsList){
+            int platformTop = (int) platform.getY() + (int) platform.getHeight();
+            boolean withinX = getX() + getWidth() > platform.getX() && getX() + getWidth() < platform.getX() + platform.getWidth()+45;
+            boolean fallingOntoPlatform = getY() <= platformTop && (getY()- velocityY * deltaTime) >= platformTop;
+           
+            if (withinX && fallingOntoPlatform && velocityY <= 0) {
+                setY(platformTop);
+                velocityY = 0;
+                isGrounded = true;
+            }
         }
 
         // Handle Jumping

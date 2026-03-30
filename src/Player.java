@@ -45,6 +45,7 @@ public class Player extends GameObject {
     private final float GRAVITY = -2000f; // Downward force
     private final float JUMP_FORCE = 850f; // Initial upward burst
     private boolean isGrounded = true;
+    private int lives = 3;
 
     public Player(double x, double y){
         super(x, y, 70, 70, "assets/mario.png", 3);
@@ -73,7 +74,7 @@ public class Player extends GameObject {
 
         for (Platform platform :MyGame.platformsList){
             int platformTop = (int) platform.getY() + (int) platform.getHeight();
-            boolean withinX = getX() + getWidth() > platform.getX() && getX() + getWidth() < platform.getX() + platform.getWidth();
+            boolean withinX = getX() + getWidth() > platform.getX() && getX() + getWidth() < platform.getX() + platform.getWidth()+70;
             boolean fallingOntoPlatform = getY() <= platformTop && (getY()- velocityY * deltaTime) >= platformTop;
            
             if (withinX && fallingOntoPlatform && velocityY <= 0) {
