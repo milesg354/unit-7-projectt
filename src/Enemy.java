@@ -71,11 +71,11 @@ public class Enemy extends GameObject {
         setY(getY() + (velocityY * deltaTime));
 
         // Basic Floor Collision (Assuming Y=100 is your ground)
-        if (getY() <= 100) {
-            setY(100);
-            velocityY = 0;
-            isGrounded = true;
-        }
+        // if (getY() <= 100) {
+        //     setY(100);
+        //     velocityY = 0;
+         // isGrounded = true;
+       // }
         for (Platform platform :MyGame.platformsList){
             int platformTop = (int) platform.getY() + (int) platform.getHeight();
             boolean withinX = getX() + getWidth() > platform.getX() && getX() + getWidth() < platform.getX() + platform.getWidth()+45;
