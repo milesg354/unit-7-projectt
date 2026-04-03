@@ -90,8 +90,8 @@ public class GameObject {
     public void jump(double deltaTime){
 
     }
-  //  public Bullet shoot(){
-       // return null;
-   // }
+   public void shoot(){
+       
+   }
 }
 

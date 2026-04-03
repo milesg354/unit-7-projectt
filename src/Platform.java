@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Platform extends GameObject {
 
     public Platform(float x, float y, float width, float height) {
-        super(x, y, width, height, "assets/brick.png", Integer.MAX_VALUE);
+        super(x, y, width, height, "assets/platform.png", Integer.MAX_VALUE);
     }
 
     @Override

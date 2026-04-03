@@ -40,11 +40,11 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(BottomPlatform);
         Platform SecretPlatform = new Platform(55,410,150,10);
         activeObjects.add(SecretPlatform);
-        Platform AbovePlatform = new Platform(55,510,550,10);
+        Platform AbovePlatform = new Platform(405,430,80,10);
         activeObjects.add(AbovePlatform);
-        Platform SunPlatform = new Platform(650,410,50,10);
+        Platform SunPlatform = new Platform(670,420,50,10);
         activeObjects.add(SunPlatform);
-        Platform floorPlatform = new Platform(0,0,800,0);
+        Platform floorPlatform = new Platform(-4000,0,8000,0);
         activeObjects.add(floorPlatform);
         
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 

@@ -43,7 +43,7 @@ public class Player extends GameObject {
     private float speed = 200f;
     private float velocityY = 0;
     private final float GRAVITY = -2000f; // Downward force
-    private final float JUMP_FORCE = 850f; // Initial upward burst
+    private final float JUMP_FORCE = 825f; // Initial upward burst
     private boolean isGrounded = true;
     private int lives = 3;
 

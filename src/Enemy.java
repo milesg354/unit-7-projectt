@@ -94,13 +94,13 @@ public class Enemy extends GameObject {
             isGrounded = false;
         }
     }
-    public Bullet shoot(){
+    public void shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)){
             // Create a new bullet at the player's position
             Bullet newBullet = new Bullet(getX(), getY(), true);
-            // Add the bullet to the activeObjects list in MyGame
-            return newBullet;
+            // Add the bullet to the activeObjects arrayList in MyGame class
+            //Have the bullet move in the direction the player was moving
         }
-        return null; 
+         
     }
 }
