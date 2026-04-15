@@ -92,6 +92,9 @@ public class MyGame extends ApplicationAdapter {
             // }
             q.move(deltaTime);
             q.jump(deltaTime);
+            if(q.shoot() != null){
+                activeObjects.add(q.shoot());
+            }
             q.draw(batch);
           //  if(q.shoot().equals(null)){
               //  activeObjects.add(q.shoot());

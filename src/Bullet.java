@@ -5,7 +5,7 @@ import com.badlogic.gdx.Input;
 public class Bullet extends GameObject {
     private float speed = 500f;
     private float horizVelo = 0;
-    private final float GRAVITY = -2000f; // Downward force
+    private final float GRAVITY = 0f; // Downward force
     private boolean isGrounded = false;
     private boolean left;
 
@@ -23,7 +23,7 @@ public class Bullet extends GameObject {
             setX(getX() - 2);
         }
     }
-    public void shoot(double deltaTime){
-        
+    public Bullet shoot(){
+        return null;
     }
 }

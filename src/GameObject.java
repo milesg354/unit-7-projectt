@@ -42,7 +42,7 @@ public class GameObject {
     }
     public double getHeight(){
         return height;
-    }
+    }   
     public Rectangle getHibox(){
         return hitbox;
     }
@@ -90,8 +90,8 @@ public class GameObject {
     public void jump(double deltaTime){
 
     }
-   public void shoot(){
-       
+   public Bullet shoot(){
+       return null;
    }
 }
 

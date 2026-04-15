@@ -102,19 +102,15 @@ public class Player extends GameObject {
 
 
 
-    // //public Bullet shoot(){
-    //     if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.A)){
-    //         // Create a new bullet at the player's position
-    //         Bullet newBullet = new Bullet(getX(), getY(), true);
-    //         // Add the bullet to the activeObjects list in MyGame
-    //         //return newBullet;
-    //     } else if (Gdx.input.isKeyJustPressed(Input.Keys.E)){
-    //         Bullet newBullet = new Bullet(getX(), getY(), false);
-    //        // return newBullet;
-    //     }
-    //     else{
-    //         //return null;
-    //     }
-    // }
+    public Bullet shoot(){
+        if(Gdx.input.isKeyJustPressed(Input.Keys.E)){    
+            Bullet q = new Bullet(getX(), getY(), true);
+            return q;
+        } else if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.D)){
+            Bullet q = new Bullet(getX(), getY(), false);
+            return q;
+        }
+        return null;
+    }
 }
 
