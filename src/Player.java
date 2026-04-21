@@ -42,13 +42,13 @@ public class Player extends GameObject {
 
     private float speed = 200f;
     private float velocityY = 0;
-    private final float GRAVITY = -2000f; // Downward force
-    private final float JUMP_FORCE = 825f; // Initial upward burst
+    private final float GRAVITY = -2000f; 
+    private final float JUMP_FORCE = 825f; 
     private boolean isGrounded = true;
     private int lives = 3;
 
     public Player(double x, double y){
-        super(x, y, 70, 70, "assets/mario.png", 3);
+        super(x, y, 70, 70, "assets/p1l.png", 3);
     }
 
     @Override
@@ -104,10 +104,10 @@ public class Player extends GameObject {
 
     public Bullet shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.E)){    
-            Bullet q = new Bullet(getX(), getY(), true);
+            Bullet q = new Bullet(getX()+70, getY(), false);
             return q;
-        } else if(Gdx.input.isKeyJustPressed(Input.Keys.E) && Gdx.input.isKeyPressed(Input.Keys.D)){
-            Bullet q = new Bullet(getX(), getY(), false);
+        } else if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
+            Bullet q = new Bullet(getX()-40, getY(), true);
             return q;
         }
         return null;

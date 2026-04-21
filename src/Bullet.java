@@ -9,18 +9,18 @@ public class Bullet extends GameObject {
     private boolean isGrounded = false;
     private boolean left;
 
-    public Bullet(double x, double y, boolean direction){
-        super(x, y, 10, 10, "assets/bullet.png", Integer.MAX_VALUE);
-        left = direction;
+    public Bullet(double x, double y, boolean left){
+        super(x, y, 40, 40, "assets/bullet.png", Integer.MAX_VALUE);
+        this.left = left;
     }
 
     @Override
     public void move(double deltaTime){
         if(left){
-            setX(getX() - 2);
+            setX(getX() - 9);
         }
         else{
-            setX(getX() - 2);
+            setX(getX() + 9);
         }
     }
     public Bullet shoot(){

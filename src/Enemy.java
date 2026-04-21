@@ -50,6 +50,7 @@ public class Enemy extends GameObject {
     private final float GRAVITY = -2000f; // Downward force
     private final float JUMP_FORCE = 850f; // Initial upward burst
     private boolean isGrounded = true;
+    private String name = "Toad";
 
     public Enemy(double x, double y){
         super(x, y, 90, 90, "assets/toad.png", 3);
@@ -65,6 +66,7 @@ public class Enemy extends GameObject {
         }
 
         isGrounded = false;
+        
         
         // Apply Gravity
         velocityY += GRAVITY * deltaTime;
@@ -96,10 +98,10 @@ public class Enemy extends GameObject {
     }
     public Bullet shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)){    
-            Bullet q = new Bullet(getX(), getY(), true);
+            Bullet q = new Bullet(getX()-40, getY()+12, true);
             return q;
-        } else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.CONTROL_RIGHT)){
-            Bullet q = new Bullet(getX(), getY(), false);
+        } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_0)){
+            Bullet q = new Bullet(getX()+80, getY()+12, false);
             return q;
         }
         return null;

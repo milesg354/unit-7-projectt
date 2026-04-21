@@ -43,7 +43,7 @@ public class GameObject {
     public double getHeight(){
         return height;
     }   
-    public Rectangle getHibox(){
+    public Rectangle getHitbox(){
         return hitbox;
     }
     public int getPlayerNum(){
@@ -90,6 +90,13 @@ public class GameObject {
     public void jump(double deltaTime){
 
     }
+    public void loseLife(){
+        lives--;
+    }
+    public int getLives(){
+        return lives;
+    }
+
    public Bullet shoot(){
        return null;
    }

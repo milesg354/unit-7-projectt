@@ -24,7 +24,7 @@ public class MyGame extends ApplicationAdapter {
         
         // TODO 3: Instantiate your Player subclass and add it to activeObjects.
         
-        Player playerOne = new Player(500,500);
+        Player playerOne = new Player(500,100);
         activeObjects.add(playerOne);
         Enemy playerTwo = new Enemy(650,100);
         activeObjects.add(playerTwo);
@@ -46,6 +46,21 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(SunPlatform);
         Platform floorPlatform = new Platform(-4000,0,8000,0);
         activeObjects.add(floorPlatform);
+        Bullet bill = new Bullet(200,200, false);
+        activeObjects.add(bill);
+        GameObject PH1 = new GameObject(10,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(PH1);
+        GameObject PH2 = new GameObject(30,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(PH2);
+        GameObject PH3 = new GameObject(50,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(PH3);
+
+        GameObject EH1 = new GameObject(770,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(EH1);
+        GameObject EH2 = new GameObject(750,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(EH2);
+        GameObject EH3 = new GameObject(730,5,30,30, "assets\\heart.png", 100);
+        activeObjects.add(EH3);
         
         // TODO 4: Write a for-loop to instantiate 5 Enemy objects at different 
         //         starting Y-coordinates and add them to activeObjects.
@@ -86,7 +101,8 @@ public class MyGame extends ApplicationAdapter {
         batch.begin();
         batch.draw(backgroundImage, 0, 0, 800, 500);
         // TODO 6: Write a loop to iterate through activeObjects and call draw(batch).
-        for(GameObject q : activeObjects){
+        for(int i = activeObjects.size()-1; i >= 0 ; i--){
+            GameObject q = activeObjects.get(i);
             // if(q.getY() > 100){
             //     q.setY(q.getY() - (170 * Gdx.graphics.getDeltaTime())); // Apply gravity
             // }
@@ -96,6 +112,9 @@ public class MyGame extends ApplicationAdapter {
                 activeObjects.add(q.shoot());
             }
             q.draw(batch);
+            if(q.getLives() == 0){
+                
+            }
           //  if(q.shoot().equals(null)){
               //  activeObjects.add(q.shoot());
            // }
@@ -109,7 +128,19 @@ public class MyGame extends ApplicationAdapter {
         // See the cheat sheet for the overlap method!
         // NOTE: If you are removing items from an ArrayList, how must you structure 
         // your for-loop to avoid skipping elements?
-
+        
+        for(int i = activeObjects.size()-1; i >= 0; i--){
+            if(activeObjects.get(i) instanceof Bullet){
+                for(int j = activeObjects.size()-1; j >= 0 ; j--){
+                    if(i != j && !(activeObjects.get(j) instanceof Platform) && activeObjects.get(j).getHitbox().overlaps(activeObjects.get(i).getHitbox())){
+                        activeObjects.get(i).setX(100000);
+                        activeObjects.get(i).setY(100000);
+                        activeObjects.get(j).loseLife();
+                        System.out.println(activeObjects.get(j).getLives());
+                    }
+                }
+            }
+        }
     }
     
     @Override
