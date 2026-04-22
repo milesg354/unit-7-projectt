@@ -132,11 +132,19 @@ public class MyGame extends ApplicationAdapter {
         for(int i = activeObjects.size()-1; i >= 0; i--){
             if(activeObjects.get(i) instanceof Bullet){
                 for(int j = activeObjects.size()-1; j >= 0 ; j--){
-                    if(i != j && !(activeObjects.get(j) instanceof Platform) && activeObjects.get(j).getHitbox().overlaps(activeObjects.get(i).getHitbox())){
-                        activeObjects.get(i).setX(100000);
-                        activeObjects.get(i).setY(100000);
-                        activeObjects.get(j).loseLife();
-                        System.out.println(activeObjects.get(j).getLives());
+                    if(i != j && !(activeObjects.get(i) instanceof Platform) && activeObjects.get(i).getHitbox().overlaps(activeObjects.get(j).getHitbox())){
+                        if(activeObjects.get(j) instanceof Bullet && activeObjects.get(i) instanceof Bullet){
+                            activeObjects.remove(activeObjects.get(i));
+                            activeObjects.remove(activeObjects.get(j));
+                            i--;
+                            i--;
+                        }
+                        else{
+                            activeObjects.remove(activeObjects.get(i));
+                            activeObjects.get(j).loseLife();
+                            System.out.println(activeObjects.get(j).getLives());
+                            i--;
+                        }
                     }
                 }
             }

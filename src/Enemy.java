@@ -53,7 +53,7 @@ public class Enemy extends GameObject {
     private String name = "Toad";
 
     public Enemy(double x, double y){
-        super(x, y, 90, 90, "assets/toad.png", 3);
+        super(x, y, 70, 70, "assets/toad.png", 3);
     }
 
     @Override
@@ -98,10 +98,10 @@ public class Enemy extends GameObject {
     }
     public Bullet shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)){    
-            Bullet q = new Bullet(getX()-40, getY()+12, true);
+            Bullet q = new Bullet(getX()-40, getY()+15, true);
             return q;
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_0)){
-            Bullet q = new Bullet(getX()+80, getY()+12, false);
+            Bullet q = new Bullet(getX()+70, getY()+15, false);
             return q;
         }
         return null;
