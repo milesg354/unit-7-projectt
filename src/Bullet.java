@@ -10,7 +10,7 @@ public class Bullet extends GameObject {
     private boolean left;
 
     public Bullet(double x, double y, boolean left){
-        super(x, y, 40, 40, "assets/bullet.png", Integer.MAX_VALUE);
+        super(x, y, 40, 10, "assets/bullet.png", Integer.MAX_VALUE);
         this.left = left;
     }
 

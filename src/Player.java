@@ -104,10 +104,10 @@ public class Player extends GameObject {
 
     public Bullet shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.E)){    
-            Bullet q = new Bullet(getX()+70, getY()+12, false);
+            Bullet q = new Bullet(getX()+70, getY()+32, false);
             return q;
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.Q)){
-            Bullet q = new Bullet(getX()-40, getY()+12, true);
+            Bullet q = new Bullet(getX()-40, getY()+32, true);
             return q;
         }
         return null;

@@ -50,14 +50,14 @@ public class MyGame extends ApplicationAdapter {
         activeObjects.add(bill);
         GameObject PH1 = new GameObject(10,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(PH1);
-        GameObject PH2 = new GameObject(30,5,30,30, "assets\\heart.png", 100);
+        GameObject PH2 = new GameObject(31,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(PH2);
-        GameObject PH3 = new GameObject(50,5,30,30, "assets\\heart.png", 100);
+        GameObject PH3 = new GameObject(52,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(PH3);
 
-        GameObject EH1 = new GameObject(770,5,30,30, "assets\\heart.png", 100);
+        GameObject EH1 = new GameObject(772,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(EH1);
-        GameObject EH2 = new GameObject(750,5,30,30, "assets\\heart.png", 100);
+        GameObject EH2 = new GameObject(751,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(EH2);
         GameObject EH3 = new GameObject(730,5,30,30, "assets\\heart.png", 100);
         activeObjects.add(EH3);

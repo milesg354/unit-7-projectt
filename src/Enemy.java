@@ -98,10 +98,10 @@ public class Enemy extends GameObject {
     }
     public Bullet shoot(){
         if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)){    
-            Bullet q = new Bullet(getX()-40, getY()+15, true);
+            Bullet q = new Bullet(getX()-40, getY()+32, true);
             return q;
         } else if(Gdx.input.isKeyJustPressed(Input.Keys.NUMPAD_0)){
-            Bullet q = new Bullet(getX()+70, getY()+15, false);
+            Bullet q = new Bullet(getX()+70, getY()+32, false);
             return q;
         }
         return null;
